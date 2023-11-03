@@ -39,6 +39,10 @@
     "arrowParens": "always",
     "singleQuote": true,
     "tabWidth": 2,
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "daisyui": "^3.6.5"
+  },
+  "devDependencies": {
+    "daisyui": "^3.9.2"
   }
 }
