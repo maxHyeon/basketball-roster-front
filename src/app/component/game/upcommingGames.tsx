@@ -4,12 +4,14 @@ import { getGameData } from '../../game/gameContext';
 import { Game } from '../../game/gameContext'
 import GameCard from './gameCard';
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import { GameInfoEditModal } from './gameInfoEditModal';
 
 export default function UpcommingGames() {
   const [games, setGame] = useState<Game[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     setIsLoading(true);
     async function fetchProduct() {
@@ -29,7 +31,8 @@ export default function UpcommingGames() {
     <div>
       <div className="flex justify-between">
         <p className="text-2xl antialiased font-light font-mono">Upcomming Games</p>
-        <button className="btn btn-secondary">새 게임 시작</button>
+        <button className="btn btn-secondary" onClick={() => document.getElementById('gameInfoEditModal').showModal()}>새 게임 시작</button>
+        {/* <a href="#my_modal_8" className="btn btn-secondary">새 게임 시작</a> */}
       </div>
       <div className="sm:hidden md:flex lg:inline-block"></div>
       <div className="flex w-full">
@@ -40,6 +43,7 @@ export default function UpcommingGames() {
           </React.Fragment>
         ))}
       </div>
+      <GameInfoEditModal />
     </div>
   );
 }

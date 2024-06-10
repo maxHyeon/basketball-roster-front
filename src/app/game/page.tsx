@@ -1,6 +1,5 @@
 import GameTable from '../component/game/gameTable';
 import UpcommingGames from '../component/game/upcommingGames';
-// export const dynamic = 'force-dynamic';
 
 
 export default function IndexPage() {

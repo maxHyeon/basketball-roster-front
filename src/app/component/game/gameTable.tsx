@@ -2,12 +2,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { getGameData } from '../../game/gameContext';
 import { Game } from '../../game/gameContext'
+import { useRouter } from 'next/navigation';
 
 
 export default function GameTable() {
   const [games, setGame] = useState<Game[]>([]);
-  const [isEditing, setIsEditing] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [_, setIsLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsLoading(true);
@@ -17,17 +18,6 @@ export default function GameTable() {
     }
     fetchProduct()
   }, [])
-
-
-  function handleEditButtonClick() {
-    if (isEditing) {
-      setIsEditing(false)
-      return 0
-    } else {
-      setIsEditing(true)
-      return 0
-    }
-  }
 
   return (
     <div>
@@ -57,7 +47,7 @@ export default function GameTable() {
                 {/* {game.gameDate} */}
               </td>
               <td className="w-1/4">
-                <button className="btn btn-accent">detail</button>
+                <button className="btn btn-accent" onClick={()=>router.push(`/game/${game.id}`)}>detail</button>
               </td>
             </tr>
           ))}
