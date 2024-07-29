@@ -21,7 +21,7 @@ export default function IndexPage() {
         fetchProduct()
     }, [])
     function gameJoinOnclickHandler(){
-        const sessionUserData = JSON.parse(sessionStorage.getItem('userData'));
+        const sessionUserData = JSON.parse(sessionStorage.getItem('userData') as string);
         console.log(sessionUserData)
         const updatedGameInfo:GameDetail = {
             ...gameInfo,

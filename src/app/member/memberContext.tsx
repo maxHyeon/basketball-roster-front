@@ -4,7 +4,7 @@ import { UUID } from 'crypto';
 
 export interface Member {
     id: number;
-    memberId: UUID;
+    memberId: UUID ;
     memberName: string;
     memberPositions: Array<string>;
     ableQuarters: number;

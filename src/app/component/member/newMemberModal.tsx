@@ -2,6 +2,7 @@ import { Member } from "@/app/member/memberContext";
 import { registerMember } from "../../member/memberContext";
 import { useState } from "react";
 import { Position } from "postcss";
+import { NIL_UUID } from "aws-rum-web/dist/cjs/sessions/SessionManager";
 
 
 
@@ -29,7 +30,7 @@ export function NewMemberModal() {
     }
 
     const [newMember, setNewMember] = useState<Member>({
-        id: 0, memberName: "", memberPositions: [], ableQuarters: 0
+        id: 0, memberId: NIL_UUID, memberName: "", memberPositions: [], ableQuarters: 0
     });
     function handleNameInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         setNewMember({ ...newMember, memberName: event.target.value })

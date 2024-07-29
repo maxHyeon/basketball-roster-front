@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, SetStateAction } from 'react';
 import { getMemberData } from '../../member/memberContext';
 import { Member } from '../../member/memberContext';
 import { Name } from './name';
@@ -15,7 +15,8 @@ export default function MembersTable() {
   useEffect(() => {
     setIsLoading(true);
     async function fetchProduct() {
-      setMembers(await getMemberData());
+      const newMemberData = await getMemberData()
+      setMembers(newMemberData as SetStateAction<Member[]>);
       setIsLoading(false);
     }
     fetchProduct()
@@ -35,7 +36,7 @@ export default function MembersTable() {
 
   function memberPositionChanage(position: Array<string>, index: number) {
     const updatedMembers = [...members]
-    updatedMembers[index].memberPosition = position
+    updatedMembers[index].memberPositions = position
     setMembers(updatedMembers)
   }
 
@@ -77,7 +78,7 @@ export default function MembersTable() {
       </table>
       <button className="btn btn-outline" onClick={handleEditButtonClick}> 편집 </button>
       <button className="btn btn-outline"> 저장 </button>
-      <button className="btn btn-outline" onClick={() => document.getElementById('newMemberModal').showModal()} > 멤버 등록 </button>
+      <button className="btn btn-outline" onClick={() => (document.getElementById('newMemberModal') as HTMLDialogElement  ).showModal()} > 멤버 등록 </button>
       <NewMemberModal />
     </div>
   );

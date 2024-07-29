@@ -19,7 +19,7 @@ try {
       sessionSampleRate: 1,
       identityPoolId: "ap-northeast-2:00af3603-fbe4-4aae-8745-5bf81af602be",
       endpoint: "https://dataplane.rum.ap-northeast-2.amazonaws.com",
-      eventPluginsToLoad: [myClickCustomEventPlugin],
+      eventPluginsToLoad: [myClickCustomEventPlugin as MyClickEventPlugin],
       telemetries: ["performance", "errors", "http"
         // , ['interaction', {
         //   events: [{ event: 'click', element: document }],
