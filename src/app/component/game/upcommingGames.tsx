@@ -31,7 +31,7 @@ export default function UpcommingGames() {
     <div>
       <div className="flex justify-between">
         <p className="text-2xl antialiased font-light font-mono">Upcomming Games</p>
-        <button className="btn btn-secondary" onClick={() => document.getElementById('gameInfoEditModal').showModal()}>새 게임 시작</button>
+        <button className="btn btn-secondary" onClick={() => document.getElementById('gameInfoEditModal')?.showModal()}>새 게임 시작</button>
         {/* <a href="#my_modal_8" className="btn btn-secondary">새 게임 시작</a> */}
       </div>
       <div className="sm:hidden md:flex lg:inline-block"></div>
