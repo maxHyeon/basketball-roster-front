@@ -17,7 +17,8 @@ try {
     const myClickCustomEventPlugin: MyClickEventPlugin = new MyClickEventPlugin();
     const config: AwsRumConfig = {
       sessionSampleRate: 1,
-      identityPoolId: "ap-northeast-2:00af3603-fbe4-4aae-8745-5bf81af602be",
+      identityPoolId: "ap-northeast-2:7c09f8db-4dc3-49eb-871b-1e4f24fdfc83",
+    //   identityPoolId: "ap-northeast-2:00af3603-fbe4-4aae-8745-5bf81af602be",
       endpoint: "https://dataplane.rum.ap-northeast-2.amazonaws.com",
       eventPluginsToLoad: [myClickCustomEventPlugin as MyClickEventPlugin],
       telemetries: ["performance", "errors", "http"
@@ -31,7 +32,8 @@ try {
       enableXRay: false
     };
   
-    const APPLICATION_ID: string = 'ca483956-5e54-4ce6-b2a1-61188c790d7d';
+    const APPLICATION_ID: string = '3da33da9-dec4-400a-9c32-5c487cff8469';
+    // const APPLICATION_ID: string = 'ca483956-5e54-4ce6-b2a1-61188c790d7d';
     const APPLICATION_VERSION: string = '1.0.0';
     const APPLICATION_REGION: string = 'ap-northeast-2';
   
