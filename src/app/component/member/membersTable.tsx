@@ -5,6 +5,7 @@ import { Member } from '../../member/memberContext';
 import { Name } from './name';
 import { MemberPosition } from './memberPosition';
 import { Qurter } from './qurter';
+import { NewMemberModal } from './newMemberModal';
 
 export default function MembersTable() {
   const [members, setMembers] = useState<Member[]>([]);
@@ -22,19 +23,19 @@ export default function MembersTable() {
 
   function handleNameInputChange(index: number, newValue: string) {
     const updatedMembers = [...members]
-    updatedMembers[index].name = newValue
+    updatedMembers[index].memberName = newValue
     setMembers(updatedMembers)
   }
 
   function handleQurterInputChange(index: number, newValue: number) {
     const updatedMembers = [...members]
-    updatedMembers[index].qurter = newValue
+    updatedMembers[index].ableQuarters = newValue
     setMembers(updatedMembers)
   }
 
   function memberPositionChanage(position: Array<string>, index: number) {
     const updatedMembers = [...members]
-    updatedMembers[index].position = position
+    updatedMembers[index].memberPosition = position
     setMembers(updatedMembers)
   }
 
@@ -62,13 +63,13 @@ export default function MembersTable() {
           {members.map((member, index) => (
             <tr className="h-20" key={member.id}>
               <td className="w-1/4">
-                <Name memberName={member.name} isEditing={isEditing} onChange={(newValue: string) => handleNameInputChange(index, newValue)}></Name>
+                <Name memberName={member.memberName} isEditing={isEditing} onChange={(newValue: string) => handleNameInputChange(index, newValue)}></Name>
               </td>
               <td className="w-1/4">
                 <MemberPosition member={member} memberIndex={index} isEditing={isEditing} onChange={memberPositionChanage} ></MemberPosition>
               </td>
               <td className="w-1/4">
-                <Qurter memberQurter={member.qurter} isEditing={isEditing} onChange={(newValue: number) => handleQurterInputChange(index, newValue)} ></Qurter>
+                <Qurter memberQurter={member.ableQuarters} isEditing={isEditing} onChange={(newValue: number) => handleQurterInputChange(index, newValue)} ></Qurter>
               </td>
             </tr>
           ))}
@@ -76,6 +77,8 @@ export default function MembersTable() {
       </table>
       <button className="btn btn-outline" onClick={handleEditButtonClick}> 편집 </button>
       <button className="btn btn-outline"> 저장 </button>
+      <button className="btn btn-outline" onClick={() => document.getElementById('newMemberModal').showModal()} > 멤버 등록 </button>
+      <NewMemberModal />
     </div>
   );
 }

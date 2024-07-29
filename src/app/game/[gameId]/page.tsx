@@ -20,6 +20,15 @@ export default function IndexPage() {
         }
         fetchProduct()
     }, [])
+    function gameJoinOnclickHandler(){
+        const sessionUserData = JSON.parse(sessionStorage.getItem('userData'));
+        console.log(sessionUserData)
+        const updatedGameInfo:GameDetail = {
+            ...gameInfo,
+            attendMembers: [...gameInfo.attendMembers, { id: 3, name: sessionUserData }]
+        }
+        setGameInfo(updatedGameInfo);
+    }
 
     const gameInfoComponents = useCallback(() => {
         return (
@@ -58,7 +67,7 @@ export default function IndexPage() {
                         </tbody>
                     </table >
                 </div>
-                <button className="btn btn-accent mt-6" >경기 참가</button>
+                <button className="btn btn-accent mt-6" onClick={()=>gameJoinOnclickHandler()} >경기 참가</button>
                 <button className="btn btn-accent mt-6 ml-3" >변경</button>
             </>
         )

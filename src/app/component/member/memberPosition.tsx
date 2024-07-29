@@ -14,17 +14,17 @@ export function MemberPosition({ member, memberIndex, isEditing, onChange }: Pro
 
   function positionChange(position: string, memberIndex: number) {
     updatePosition(position)
-    onChange(member.position, memberIndex);
+    onChange(member.memberPositions, memberIndex);
   }
 
   function updatePosition(position: string) {
-    const index = member.position.indexOf(position, 0);
+    const index = member.memberPositions.indexOf(position, 0);
     if (index == -1) {
-      member.position.push(position)
+      member.memberPositions.push(position)
       return
     }
     if (index > -1) {
-      member.position.splice(index, 1);
+      member.memberPositions.splice(index, 1);
       return
     }
 
@@ -39,7 +39,7 @@ export function MemberPosition({ member, memberIndex, isEditing, onChange }: Pro
             <div className="form-control" key={index}>
               <label className="label cursor-pointer">
                 <span className="label-text">{position}</span>
-                <input type="checkbox" checked={member.position.includes(position)} onChange={() => { positionChange(position, memberIndex) }} className="checkbox checkbox-xs" />
+                <input type="checkbox" checked={member.memberPositions.includes(position)} onChange={() => { positionChange(position, memberIndex) }} className="checkbox checkbox-xs" />
               </label>
             </div>
           ))}
@@ -49,7 +49,7 @@ export function MemberPosition({ member, memberIndex, isEditing, onChange }: Pro
   } else {
     memberPosition =
       <>
-        {member.position.map((position, index) => (
+        {member.memberPositions.map((position, index) => (
           <span className="badge badge-md" key={index}>{position}</span>
         ))}
       </>
